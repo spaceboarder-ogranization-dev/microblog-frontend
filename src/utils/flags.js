@@ -16,4 +16,3 @@ async function initCloudBees () {
 initCloudBees().then(function () {
   console.log('Done loading CloudBees Feature Management')
 })
-
