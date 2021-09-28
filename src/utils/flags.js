@@ -42,7 +42,25 @@ async function initCloudBees () {
 }
 
 initCloudBees().then(function () {
-  console.log('Done loading CloudBees Feature Management')import Rox from 'rox-browser'import Rox from 'rox-browser'
+  console.log('Done loading CloudBees Feature Management')import Rox from 'rox-browser'import Rox from 'rox-browser'import Rox from 'rox-browser'
+
+export const Flags = {
+  sidebar: new Rox.Flag(false),
+  title: new Rox.Flag(false)
+}
+
+async function initCloudBees () {
+  const options = {
+  }
+
+  Rox.register('default', Flags)
+  await Rox.setup(process.env.VUE_APP_CLOUDBEES_KEY, options)
+}
+
+initCloudBees().then(function () {
+  console.log('Done loading CloudBees Feature Management')
+})
+
 
 export const Flags = {
   sidebar: new Rox.Flag(false),
