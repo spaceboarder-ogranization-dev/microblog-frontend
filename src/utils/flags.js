@@ -1,6 +1,9 @@
 import Rox from 'rox-browser'
+import store from '../store'
+import { betaAccess } from './users'
 
-export const Flags = {
+export const Flags = 
+  {
   sidebar: new Rox.Flag(false),
   title: new Rox.Flag(false)
 }
@@ -15,12 +18,13 @@ export const configurationFetchedHandler = fetcherResults => {
 }
 
 async function initCloudBees () {
-  const options = {
+    const options = {
     configurationFetchedHandler: configurationFetchedHandler
   }
-
-  Rox.register('default', Flags)
-  await Rox.setup(process.env.VUE_APP_CLOUDBEES_KEY, options)
+  Rox.setCustomBooleanProperty('isLoggedIn', store.getters.isLoggedIn)
+  Rox.setCustomBooleanProperty('hasBetaAccess', betaAccess())
+  Rox.register('default', Flags);
+  await Rox.setup(process.env.VUE_APP_CLOUDBEES_KEY, options);
 }
 
 initCloudBees().then(function () {
